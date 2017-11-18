@@ -3,31 +3,35 @@ class MessageController{
 	private $access_token='bMxLi6kKTa/Lt23ZIVLnt67TZHHdbYKiUxaycIMoNWp5VmLQ6tgc2rQT931RmJXdx2gA24/cf/sFpV84O1uOmSPHspwy0OLWXKodwnlwh8SLO44dopDMxUWPIIxJzlB14bs6IjfOHlR932hlgtUETgdB04t89/1O/w1cDnyilFU=';
     public function getMessage(){
 		header('Content-Type: text/html; charset=utf-8');
-		$content=file_get_contents('php://input');
-		$events=json_decode($content,true);
+		$content = file_get_contents('php://input');
+		$events = json_decode($content,true);
+	    	$events = strtolower("$content");
 		if(!is_null($events['events'])) {
 			foreach($events['events'] as $event){
 				if($event['type']=='message'&&$event['message']['type']=='text'){
 					$text = $event['message']['text'];
 					$replyToken = $event['replyToken'];
-					if(strpos($text,'Hi')!==FALSE){
-						$textSend="Hello";
-					}else if (strpos($text,'name')!==FALSE) {
-						$textSend="my name is Gun";
-					}else if (strpos($text,'old')!==FALSE) {
-						$textSend="I'm 20 years old";
+					if(strpos($text,'สวัสดี')!==FALSE){
+						$textSend="สวัสดีงับ";
+					}else if (strpos($text,'ชื่อ')!==FALSE) {
+						$textSend="เราชื่อเกมส์";
+					}else if (strpos($text,'อายุ')!==FALSE) {
+						$textSend="เราอายุเท่าเธอ";
 					}else if (strpos($text,'ROV')!==FALSE) {
-						$textSend="You are noob!";
-					}else if (strpos($text,'scream')!==FALSE) {
-						$textSend="OH shit!";
-					}else if (strpos($text,'beautiful')!==FALSE) {
-						$textSend="Gun";
+						$textSend="นายมันกระจอกสิ้นดี";
+					}else if (strpos($text,'โง่')!==FALSE) {
+						$textSend="โถ เราแค่อ่อนให้";
+					}else if (strpos($text,'หล่อ')!==FALSE) {
+						$textSend="เรารู้ตัว";
 					}else if (strpos($text,'give')!==FALSE) {
 						$textSend="Thank you so much!";
 					}else if (strpos($text,'sing')!==FALSE) {
 						$textSend="sing with me everyday";
+					}
+					else if (strpos($text,'sing')!==FALSE) {
+						$textSend="sing with me everyday";
 					}else{
-						$textSend="Why you ask me?";
+						$textSend="ฉันไม่รู็ว่าคุณหมายถึงอะไร เชิญถาม Google";
 					}
 					$this->sendMessage($textSend,$replyToken);
 					break;
