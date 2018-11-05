@@ -1,6 +1,6 @@
 <?php
 class MessageController{
-	private $access_token='bMxLi6kKTa/Lt23ZIVLnt67TZHHdbYKiUxaycIMoNWp5VmLQ6tgc2rQT931RmJXdx2gA24/cf/sFpV84O1uOmSPHspwy0OLWXKodwnlwh8SLO44dopDMxUWPIIxJzlB14bs6IjfOHlR932hlgtUETgdB04t89/1O/w1cDnyilFU=';
+	private $access_token='VJ8i3lMy15kBCd529KumsFjx9WszyoOWHfAUCs8uJru0UQLYLV013gw2EwEBjMcpLL3pocDSLDlqNwq6gxjaIuU6vXyJS6nUpjzKnmljerB2AiGyudUiofKPyWxMxqsNr2XDz7FyZJVxHD3zvHu3XgdB04t89/1O/w1cDnyilFU=';
     public function getMessage(){
 		header('Content-Type: text/html; charset=utf-8');
 		$content = file_get_contents('php://input');
